@@ -68,6 +68,9 @@ button{font:inherit;color:inherit}
 .lopt[aria-current="true"]{background:var(--ink);color:var(--bg)}
 .lopt .ln{font-weight:600;font-size:1.05rem}
 .lopt .le{font-size:.78rem;opacity:.75}
+@media(max-width:640px){
+  .menu{position:fixed;inset-inline:12px;top:calc(64px + env(safe-area-inset-top,0px));width:auto;max-height:calc(100vh - 96px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));max-height:calc(100dvh - 96px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}
+}
 
 /* hero */
 .hero{max-width:1180px;margin:0 auto;padding:26px 20px 8px}
