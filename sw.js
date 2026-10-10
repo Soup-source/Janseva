@@ -1,6 +1,7 @@
 // JanSeva service worker: makes the app open offline.
+// Same-origin files are always re-checked with the server, so updates show up right away.
 // Bump VERSION only if you want to force-clear old caches.
-var VERSION = "janseva-v1";
+var VERSION = "janseva-v2";
 var SHELL = [
   "./",
   "./index.html",
@@ -44,7 +45,7 @@ self.addEventListener("fetch", function (e) {
   // The app itself: try the network first so updates arrive, fall back to cache offline.
   if (url.origin === location.origin) {
     e.respondWith(
-      fetch(req).then(function (res) {
+      fetch(req, { cache: "no-cache" }).then(function (res) {
         var copy = res.clone();
         caches.open(VERSION).then(function (c) { c.put(req, copy); });
         return res;
